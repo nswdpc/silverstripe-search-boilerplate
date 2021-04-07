@@ -1,0 +1,34 @@
+{
+    "name": "nswdpc/silverstripe-search-boilerplate",
+    "description": "Search boilerplate for NSWDPC Silverstripe websites, using elasticsearch configuration",
+    "type": "silverstripe-vendormodule",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "James Ellis",
+            "homepage": "https://dpc.nsw.gov.au",
+            "role": "Developer"
+        },
+        {
+            "name": "Mark Taylor",
+            "homepage": "https://dpc.nsw.gov.au",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+      "silverstripe",
+      "search",
+      "elastic",
+      "elastica",
+      "elasticsearch"
+    ],
+    "require": {
+        "nyeholt/silverstripe-extensible-elastic": "^2.10.0",
+        "nswdpc/silverstripe-elemental-extensible-search": "dev-master"
+    },
+    "config": {
+        "process-timeout": 600
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,42 @@
+---
+Name: nswdpc-search-elasticsearch
+---
+# Specify custom search engines for the ExtensibleSearchPage
+nglasl\extensible\ExtensibleSearchPage:
+  custom_search_engines:
+    Symbiote\ElasticSearch\ElasticaSearchEngine: 'Elastic'
+
+# add extensions to controllers
+PageController:
+  extensions:
+    - 'nglasl\extensible\ExtensibleSearchExtension'
+    - 'Symbiote\ElasticSearch\ElasticaSearchController'
+
+# add extensions to Page objects
+Page:
+  extensions:
+    # pages are searchable
+    - 'Symbiote\ElasticSearch\ElasticaSearchable'
+    # pages can have taxnomomy
+    - 'Symbiote\ElasticSearch\DataDiscovery'
+
+SilverStripe\Core\Injector\Injector:
+  # the Elastic client
+  ElasticClient:
+    class: Elastica\Client
+    constructor:
+      host_details:
+        host: elastic
+        port: 9200
+        # log: '/path/to/logging/location.log'
+        # this is needed for AWS search service compatibility; it adds credentials support
+        # transport: AwsAuthV4
+  Symbiote\ElasticSearch\ElasticaSearch:
+    properties:
+      searchService: %$Heyday\Elastica\ElasticaService
+  Heyday\Elastica\ElasticaService:
+    class: Symbiote\ElasticSearch\ExtensibleElasticService
+    constructor:
+      client: %$ElasticClient
+      index: default-search-index
+      # logging: %$Psr\Log\LoggerInterface
