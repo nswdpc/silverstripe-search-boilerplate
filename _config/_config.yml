@@ -6,6 +6,9 @@ nglasl\extensible\ExtensibleSearchPage:
   custom_search_engines:
     Symbiote\ElasticSearch\ElasticaSearchEngine: 'Elastic'
 
+nglasl\extensible\ExtensibleSearchSuggestion:
+  enable_suggestions: false
+
 # add extensions to controllers
 PageController:
   extensions:
@@ -17,7 +20,7 @@ Page:
   extensions:
     # pages are searchable
     - 'Symbiote\ElasticSearch\ElasticaSearchable'
-    # pages can have taxnomomy
+    # pages can have taxonomy
     - 'Symbiote\ElasticSearch\DataDiscovery'
 
 SilverStripe\Core\Injector\Injector:
