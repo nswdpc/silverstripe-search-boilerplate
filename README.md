@@ -17,7 +17,9 @@ https://github.com/nyeholt/silverstripe-extensible-elastic#installation
 
 The only supported way of installing this module is via [composer](https://getcomposer.org)
 
-`composer require nswdpc/silverstripe-search-boilerplate`
+```shell
+composer require nswdpc/silverstripe-search-boilerplate
+```
 
 ## LICENSE
 
