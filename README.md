@@ -1,6 +1,6 @@
 # Silverstripe search boilerplate
 
-Default modules and configuration for (Elasticsearch)[https://elastic.co] functionality in a Silverstripe website.
+Default modules and configuration for [Elasticsearch](https://elastic.co) functionality in a Silverstripe website.
 
 ## Modules
 
