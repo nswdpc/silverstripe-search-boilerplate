@@ -23,6 +23,7 @@
       "elasticsearch"
     ],
     "require": {
+        "heyday/silverstripe-elastica": "^2.2",
         "nyeholt/silverstripe-extensible-elastic": "^2.10.0",
         "nswdpc/silverstripe-elemental-extensible-search": "dev-master"
     },
