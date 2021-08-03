@@ -24,6 +24,7 @@
     ],
     "require": {
         "heyday/silverstripe-elastica": "^2.2",
+        "nglasl/silverstripe-extensible-search": "^4.1",
         "nyeholt/silverstripe-extensible-elastic": "^2.10.0",
         "nswdpc/silverstripe-elemental-extensible-search": "dev-master"
     },
