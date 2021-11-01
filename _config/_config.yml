@@ -7,7 +7,7 @@ nglasl\extensible\ExtensibleSearchPage:
     Symbiote\ElasticSearch\ElasticaSearchEngine: 'Elastic'
 
 nglasl\extensible\ExtensibleSearchSuggestion:
-  enable_suggestions: false
+  enable_suggestions: true
 
 # add extensions to controllers
 PageController:
