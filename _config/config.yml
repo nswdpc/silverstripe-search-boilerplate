@@ -36,10 +36,10 @@ SilverStripe\Core\Injector\Injector:
         # transport: AwsAuthV4
   Symbiote\ElasticSearch\ElasticaSearch:
     properties:
-      searchService: %$Heyday\Elastica\ElasticaService
+      searchService: '%$Heyday\Elastica\ElasticaService'
   Heyday\Elastica\ElasticaService:
     class: Symbiote\ElasticSearch\ExtensibleElasticService
     constructor:
-      client: %$ElasticClient
+      client: '%$ElasticClient'
       index: default-search-index
       # logging: %$Psr\Log\LoggerInterface
