@@ -2,6 +2,7 @@
 
 namespace NSWDPC\Search;
 
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\ORM\DataExtension;
 use Symbiote\MultiValueField\Fields\MultiValueDropdownField;
 
@@ -17,26 +18,60 @@ class ExtensibleSearchPageExtension extends DataExtension
      * @var array
      */
     private static $db = [
-        'DisplayedSortFields' => 'MultiValueField'
+        'DisplayedSortFields' => 'MultiValueField',
+        'UseAdvancedSearch' => 'Boolean'
+    ];
+
+    /**
+     * @var array
+     */
+    private static $defaults = [
+        'UseAdvancedSearch' => 0
     ];
 
     /**
      * Apply selectable sort fields to the displayed sort fields
      */
     public function updateExtensibleSearchPageCMSFields(&$fields) {
-        $sortByField = $fields->dataFieldByName('SortBy');
-        if($sortByField) {
-            $displayedSortByField = MultiValueDropdownField::create(
-                'DisplayedSortFields',
-                _t(
-                    'nswdpc_searchboilerplate.DISPLAYED_SORT_FIELDS',
-                    'Displayed sort fields'
-                ),
-                $sortByField->getSource()
+
+        if($this->owner->SearchEngine) {
+
+            // set to use advanced search
+            $fields->insertBefore(
+                'SortBy',
+                CheckboxField::create(
+                    'UseAdvancedSearch',
+                    _t(
+                        'nswdpc_searchboilerplate.USE_ADVANCED_SEARCH',
+                        'Use advanced search'
+                    )
+                )->setDescription(
+                    _t(
+                        'nswdpc_searchboilerplate.USE_ADVANCED_SEARCH_DESCRIPTION',
+                        'Show filters next to the search results'
+                    )
+                )
             );
-            $fields->insertAfter('SortBy', $displayedSortByField);
+
+            // add sort fields that can be displayed
+            if($sortByField = $fields->dataFieldByName('SortBy')) {
+                $fields->insertAfter(
+                    'SortBy',
+                    MultiValueDropdownField::create(
+                        'DisplayedSortFields',
+                        _t(
+                            'nswdpc_searchboilerplate.DISPLAYED_SORT_FIELDS',
+                            'Displayed sort fields'
+                        ),
+                        $sortByField->getSource()
+                    )
+                );
+            } else {
+                $fields->removeByName(['DisplayedSortFields']);
+            }
+
         } else {
-            $fields->removeByName('DisplayedSortFields');
+            $fields->removeByName(['DisplayedSortFields','UseAdvancedSearch']);
         }
     }
 
