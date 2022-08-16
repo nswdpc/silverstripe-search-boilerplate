@@ -5,11 +5,17 @@ Name: nswdpc-search-elasticsearch
 nglasl\extensible\ExtensibleSearchPage:
   custom_search_engines:
     Symbiote\ElasticSearch\ElasticaSearchEngine: 'Elastic'
+  extensions:
+    - 'NSWDPC\Search\ExtensibleSearchPageExtension'
 
 nglasl\extensible\ExtensibleSearchSuggestion:
   enable_suggestions: true
 
 # add extensions to controllers
+nglasl\extensible\ExtensibleSearchPageController:
+  extensions:
+    - 'NSWDPC\Search\ExtensibleSearchPageControllerExtension'
+
 PageController:
   extensions:
     - 'nglasl\extensible\ExtensibleSearchExtension'
