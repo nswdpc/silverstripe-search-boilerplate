@@ -1,0 +1,5 @@
+en:
+  nswdpc_searchboilerplate:
+    SORT_FIELD_LASTEDITED: 'Last updated'
+    SORT_FIELD__SCORE: 'Relevance'
+    SORT_FIELD_TITLE: 'Title'
