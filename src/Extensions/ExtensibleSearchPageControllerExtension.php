@@ -66,9 +66,11 @@ class ExtensibleSearchPageControllerExtension extends Extension
 
     /**
      * Update the search form
-     * @param Form $form
+     * @param Form|null $form
      */
-    public function updateExtensibleSearchSearchForm(Form $form) {
-        $this->applySortByFields($form);
+    public function updateExtensibleSearchSearchForm(?Form $form) {
+        if($form) {
+            $this->applySortByFields($form);
+        }
     }
 }
