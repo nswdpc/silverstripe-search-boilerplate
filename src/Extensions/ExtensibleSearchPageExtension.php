@@ -10,21 +10,18 @@ use Symbiote\MultiValueField\Fields\MultiValueDropdownField;
  * Update search form based on configuration
  * Extension applied to nglasl\extensible\ExtensibleSearchPageController
  * @author James
+ * @property mixed $DisplayedSortFields
+ * @property bool $UseAdvancedSearch
+ * @extends \SilverStripe\ORM\DataExtension<static>
  */
 class ExtensibleSearchPageExtension extends DataExtension
 {
-    /**
-     * @var array
-     */
-    private static $db = [
+    private static array $db = [
         'DisplayedSortFields' => 'MultiValueField',
         'UseAdvancedSearch' => 'Boolean'
     ];
 
-    /**
-     * @var array
-     */
-    private static $defaults = [
+    private static array $defaults = [
         'UseAdvancedSearch' => 0
     ];
 
@@ -34,7 +31,7 @@ class ExtensibleSearchPageExtension extends DataExtension
     public function updateExtensibleSearchPageCMSFields(&$fields)
     {
 
-        if ($this->owner->SearchEngine) {
+        if ($this->getOwner()->SearchEngine) {
 
             // set to use advanced search
             $fields->insertBefore(

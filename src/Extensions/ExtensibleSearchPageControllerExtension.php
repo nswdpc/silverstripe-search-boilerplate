@@ -10,6 +10,7 @@ use SilverStripe\Forms\FormField;
  * Update search form based on configuration
  * Extension applied to nglasl\extensible\ExtensibleSearchPageController
  * @author James
+ * @extends \SilverStripe\Core\Extension<static>
  */
 class ExtensibleSearchPageControllerExtension extends Extension
 {
@@ -20,7 +21,7 @@ class ExtensibleSearchPageControllerExtension extends Extension
     public function getDisplayedSortFields(): array
     {
         $sortFields = [];
-        $page = $this->owner->data();
+        $page = $this->getOwner()->data();
         if ($displayedSortByFields = $page->DisplayedSortFields) {
             $selectableSortFields = $page->getSelectableFields();
             $displayedFields = $displayedSortByFields->getValue();
@@ -29,18 +30,19 @@ class ExtensibleSearchPageControllerExtension extends Extension
                 if (!$fieldLabel) {
                     $fieldLabel = FormField::name_to_label($fieldName);
                 }
+
                 $sortFields[ $fieldName ] = _t(
-                    'nswdpc_searchboilerplate.SORT_FIELD_' . strtoupper($fieldName),
+                    'nswdpc_searchboilerplate.SORT_FIELD_' . strtoupper((string) $fieldName),
                     $fieldLabel
                 );
             }
         }
+
         return $sortFields;
     }
 
     /**
      * Apply configured fields for sorting to the form
-     * @param Form $form
      */
     public function applySortByFields(Form $form)
     {
@@ -58,7 +60,6 @@ class ExtensibleSearchPageControllerExtension extends Extension
 
     /**
      * Update the form
-     * @param Form $form
      */
     public function updateExtensibleSearchForm(Form $form)
     {
@@ -67,11 +68,10 @@ class ExtensibleSearchPageControllerExtension extends Extension
 
     /**
      * Update the search form
-     * @param Form|null $form
      */
     public function updateExtensibleSearchSearchForm(?Form $form)
     {
-        if ($form) {
+        if ($form instanceof \SilverStripe\Forms\Form) {
             $this->applySortByFields($form);
         }
     }
