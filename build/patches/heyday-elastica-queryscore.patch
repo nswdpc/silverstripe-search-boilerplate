@@ -1,0 +1,13 @@
+diff --git a/src/ResultList.php b/src/ResultList.php
+index 86a626c..5954dc3 100644
+--- a/src/ResultList.php
++++ b/src/ResultList.php
+@@ -260,6 +260,8 @@ class ResultList extends ViewableData implements SS_List, Limitable
+                     }
+
+                     $retrieved[$type][$id]->highlights = new ArrayData($highlightsArray);
++                    // Patch: add QueryScore
++                    $retrieved[$type][$id]->QueryScore = $item->getScore();
+
+                     $this->resultsArray[] = $retrieved[$type][$id];
+                 }

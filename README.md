@@ -1,25 +1,18 @@
 # Silverstripe search boilerplate
 
-Default modules and configuration for [Elasticsearch](https://elastic.co) functionality in a Silverstripe website.
-
-## Modules
-
-+ silverstripe-extensible-elastic - An extensible search implementation for Elastic Search
-+ silverstripe-elemental-extensible-search - Elemental search block for silverstripe-extensible-elastic
+Default extensible search modules and configuration for [Elasticsearch](https://elastic.co) functionality in a Silverstripe website.
 
 ## Configuration
 
-The patch described here should be applied (also included in [build/patches](./build/patches/heyday-elastic.patch))
-
-https://github.com/nyeholt/silverstripe-extensible-elastic#installation
+The patch described here should be applied (also included in [build/patches](./build/patches/heyday-elastic-queryscore.patch))
 
 ## Installation
-
-The only supported way of installing this module is via [composer](https://getcomposer.org)
 
 ```shell
 composer require nswdpc/silverstripe-search-boilerplate
 ```
+
+Your project should require the relevant dependencies at their required versions.
 
 ## LICENSE
 
@@ -27,7 +20,7 @@ composer require nswdpc/silverstripe-search-boilerplate
 
 ## Maintainers
 
-+ [dpcdigital@NSWDPC:~$](https://dpc.nsw.gov.au)
++ PD Web Team
 
 ## Bugtracker
 
