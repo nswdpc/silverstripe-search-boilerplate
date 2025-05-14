@@ -1,6 +1,6 @@
 <?php
 
-namespace NSWDPC\Search;
+namespace NSWDPC\Search\Extensions;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\ORM\DataExtension;
