@@ -20,6 +20,20 @@
       "elastica",
       "elasticsearch"
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/JamesDPC/silverstripe-extensible-elastic.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/JamesDPC/silverstripe-extensible-search.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nswdpc/ci-files.git"
+        }
+    ],
     "require": {
         "heyday/silverstripe-elastica": "^4.3",
         "nglasl/silverstripe-extensible-search": "*",
@@ -34,7 +48,11 @@
         "nswdpc/ci-files": "dev-v-3"
     },
     "config": {
-        "process-timeout": 600
+        "process-timeout": 600,
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
